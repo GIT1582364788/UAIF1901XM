@@ -108,18 +108,21 @@ a {
     top: 40px;
     z-index: 31;
 	width: 316px;
-	padding: 15px 0 0;
-	height: 83px;
+	height: 0;
     color: #424242;
     background: #fff;
 	box-shadow: 0 3px 3px rgba(0,0,0,0.15);
-	line-height: 68px;
+	line-height: 100px;
 	text-align: center;
-
+	transition: all .5s;
+	overflow: hidden;
 }
 .nav-right-list .shopping-car:hover{
 	color: #ff6700;
 	background: #FFFFFF;
+}
+.nav-right-list .shopping-car:hover .sho{
+	height: 100px;
 }
 /* 小米官网顶部导航结束 */
 /* 小米官网搜索部分开始 */
@@ -142,23 +145,149 @@ a {
 	height: 100%;
 }
 
+.searchBox{
+	width: 100%;
+	height: 100px;
+	position: relative;
+}
+.search-box {
+	width: 1226px;
+	height: 100px;
+	/* background: #800080; */
+	margin: 0 auto;
+}
+
+.mi-logo {
+	width: 55px;
+	height: 55px;
+	background: #0000FF;
+	margin-top: 23px;
+	float: left;
+	/* 脱离文档流 */
+}
+
+.mi-logo img {
+	width: 100%;
+	height: 100%;
+}
+
 .search-list {
 	width: 850px;
 	height: 100px;
 	/* background: red; */
 	float: left;
 }
-.search-list span {
+.search-list .nav{
+	width: 100%;
+    height: 100px;
+    float: left;
+	margin-left: 170px;
+}
+.search-list .nav .link{
+	display: block;
+	height: 100px;
+	padding-top: 20px;
+	box-sizing: border-box;
+	float: left;
+	cursor: pointer;
+}
+.search-list .nav .list-box{
+	width: 100%;
+	height: 0;
+    position: absolute;
+    top: 138px;
+    left: 0;
+	font-size: 30px;
+	z-index: 10;	
+	overflow: hidden;
+	border-top: 0.5px solid transparent;
+	/* box-shadow: 0 0.1px 2px rgba(0,0,0,0.15); */
+	transition: all .5s;	
+}
+.search-list .nav span {
 	color: #333;
 	font-size: 16px;
-	line-height: 100px;
+	line-height: 60px;
 	margin: 0 10px;
+	cursor: pointer;
 }
-.search-list span:hover{   /* 伪类选择器:当鼠标移入时的效果 */
+.search-list .nav span:hover{/* 当鼠标移入时的效果 */
+	color:#ff6700;
+}
+.search-list .nav :hover .list-box{
+	height: 200px;
+	border-top: 0.5px solid #e0e0e0;
+	
+}
+.list-box .container{
+	width: 1226px;
+	height: 100%;
+	margin: 0 auto;
+	background-color: white;
+	
+	/* background-color:#757575; */
+}
+.list-box .container .con-first{
+	width: 200px;
+	height: 100%;
+	float: left;
+	background-color: white;
+	margin-left: 2px;
+}
+.list-box .container .con-first .top{
+	width: 68px;
+	height: 22px;
+	margin: 0 auto;
+	font-size: 12px;
+	line-height: 22px;
+	text-align: center;
+	border: 1px solid #ff6700;
 	color: #ff6700;
 }
-.search-list span:nth-child(1) {   /* 伪类选择器:选择的是子元素的第几个 */
-	margin-left: 172px;
+.list-box .container .con-first .con-first-img{
+	width: 100%;
+	height: 110px;
+	margin-top: 10px;
+	border-right: 1px solid #e0e0e0;
+}
+.list-box .container .con-first .con-first-img6{
+	width: 100%;
+	height: 110px;
+	margin-top: 10px;
+}
+.con-first-img6 img{
+	display: block;
+	width: 120px;
+	height: 100%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.con-first-img img{
+	display: block;
+	width: 120px;
+	height: 100%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.list-box .container .con-first .bottom{
+	width: 66px;
+	height: 52px;
+	margin: 0 auto;
+}
+.list-box .container .con-first .bottom p{
+	height: 20px;
+	color: #333;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+	cursor: pointer;
+}
+.list-box .container .con-first .bottom .price{
+	height: 20px;
+	color: #ff6700;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
 }
 
 .search-bar {
@@ -696,6 +825,7 @@ p.goods-price del{
 	transition: all .3s linear;
 	position: relative;	
 	overflow: hidden;
+	float: left;
 }
 .phone-right-list:hover{
 	transform: translate(0,-2px);
@@ -814,9 +944,9 @@ p.good-price del{
 	position: absolute;
 	top: 0;
 	right: 0;
-	
 }
-.popular-1 li{
+
+.popular-1 .ls{
 	font-size: 16px;
     display: inline;
     padding: 0;
@@ -824,11 +954,14 @@ p.good-price del{
     color: #424242;
     border-bottom: 2px solid #f5f5f5;
     border-bottom: 2px solid transparent;
-    transition: .5s linear;
-	
-    
+    transition: .5s linear;  
 }
-.popular-1 li:hover{
+/* .popular-1 li:hover{
+	cursor: pointer;
+	color: #FF6700;
+	border-bottom: 2px solid #ff6700;
+} */
+.popular-1 .active{
 	cursor: pointer;
 	color: #FF6700;
 	border-bottom: 2px solid #ff6700;
@@ -850,6 +983,7 @@ p.good-price del{
 .t{
 	background: #83c44e;
 }
+
 /* 家电栏部分结束 */
 /* 家电部分开始 */
 .furni-body{
@@ -859,6 +993,7 @@ p.good-price del{
 	margin: 0 auto;
 	display: flex;
 	margin-bottom: 50px;
+	position: relative;
 }
 .furni-left{
 	width: 234px;
@@ -882,12 +1017,24 @@ p.good-price del{
 	width: 100%;
 	height: 100%;
 }
+
+.furni-right-con{
+	width: 992px;
+	height: 614px;
+	float: right;
+	position: relative;
+}
 .furni-right{
 	width: 992px;
 	height: 614px;
 	/* background: green; */
-	display: flex;
-	flex-wrap: wrap;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.furni-right-con .active{
+	display: block;
 }
 .last-top{
 	width: 234px;
@@ -901,6 +1048,8 @@ p.good-price del{
 	align-content: center;
 	flex-wrap: wrap;
 	position: relative;
+	float: right;
+	
 }
 .last-top:hover{
 	
@@ -948,6 +1097,7 @@ p.good-price del{
 	align-content: center;
 	flex-wrap: wrap;
 	position: relative;
+	float: right;
 }
 .last-top1:hover{
 	cursor: pointer;
@@ -1627,10 +1777,7 @@ h3.hot-title{
 	font-size: 12px;
 	padding-left: 67px;
 }
-.last-bodys:hover{
-	color: #ff6700;
-	cursor: pointer;
-}
+
 .last-imgs{
 	height: 28px;
     margin: 4px 0 0;
