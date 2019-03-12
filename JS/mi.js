@@ -1,5 +1,5 @@
 window.onload = function () {
-    // 二维码移入
+    // 二维码开始
     let box1 = document.getElementsByClassName("dis")[0]
     let box2 = document.getElementsByClassName("diss")[0]
 
@@ -10,8 +10,8 @@ window.onload = function () {
     box1.onmouseout = function () {
         box2.style.display = "none"
     }
-    // 二维码移出
-    // 购物车移入
+    // 二维码结束
+    // 购物车开始
     let box3 = document.getElementsByClassName("shopping-car")[0]
     let box4 = document.getElementsByClassName("sho")[0]
     box4.style.display = "none"
@@ -21,8 +21,8 @@ window.onload = function () {
     box3.onmouseout = function () {
         box4.style.display = "none"
     }
-    // 购物车移出
-    // 搜索移入
+    // 购物车结束
+    // 搜索移入开始
     let search = document.querySelector(".search-bar")
     let search_btn = document.querySelector(".submit-btn")
     let search_input = document.querySelector(".search-input")
@@ -74,7 +74,7 @@ window.onload = function () {
         search_btn.style.borderColor = ""
         keyword_list.style.display = "none"
     }
-    // 搜索移出
+    // 搜索结束
     // 选项卡效果开始
     let boxs = document.querySelectorAll(".bannerList-item")
     let cons = document.querySelectorAll(".bannerList-r")
