@@ -56,7 +56,6 @@ window.onload = function () {
     }
     search_btn.onmouseleave = function () {
         if (!flag) {
-
             return
         }
         search_btn.style.borderColor = "#333"
@@ -77,7 +76,7 @@ window.onload = function () {
         keyword_list.style.display = "none"
     }
     // 搜索结束
-    // 选项卡效果开始
+    // 轮播图左侧选项卡效果开始
     let boxs = document.querySelectorAll(".bannerList-item")
     let cons = document.querySelectorAll(".bannerList-r")
     boxs.forEach(function (v, i) {
@@ -118,7 +117,7 @@ window.onload = function () {
     //     index+=1
     // }
 
-    // 选项卡效果结束
+    // 轮播图左侧选项卡效果结束
     // 家电开始(选项卡功能函数)
     function select(n,b) {
         let navs = document.querySelectorAll(n)
@@ -169,6 +168,7 @@ window.onload = function () {
     //         boxs[i].classList.remove("active")
     //     }
     // })
+
 	let lis = document.querySelectorAll(".search-list .nav .link")	
 	let listBox = document.querySelectorAll(".search-list .nav .link .list-box")
 	lis.forEach(function(item,i){
@@ -181,4 +181,114 @@ window.onload = function () {
 	})
     
     // 上边的栏结束
+    // 透明轮播图开始
+    let index = 0       //执行定义
+    let pages = document.querySelectorAll(".banner-box .banner-img a")
+    let banner = document.querySelector(".banner-img")
+    let pre = document.querySelector(".banner-box .left")
+    let next = document.querySelector(".banner-box .right")
+    let dot = document.querySelectorAll(".dot")
+    banner.onmouseenter = function(){         //事件，异步，触发的时候才调用
+        clearInterval(t)
+    }
+    banner.onmouseleave = function(){            
+        t = setInterval(run,3000)
+    }
+    function run(status='next'){
+        // 轮播一次
+        // console.log("轮播")
+        if(status=='next'){
+            index+=1
+        }else if(status=='pre'){
+            index-=1
+        } 
+        if(index>4){
+            index = 0
+        }
+        if(index<0){
+            index = 4
+        }
+        pages.forEach(function(item,i){
+            item.classList.remove("active")
+        })
+        pages[index].classList.add("active")
+        dot.forEach(function(item,i){
+            item.classList.remove("active")
+        })
+        dot[index].classList.add("active")
+    }
+    let t = setInterval(run,3000)    //异步
+
+    next.onclick = function(){
+        run()
+    }
+    pre.onclick = function(){
+        run('pre')
+    }
+    // 轮播点和图对应
+    dot.forEach(function(item,i){
+        item.onclick = function(){
+            pages.forEach(function(item,i){
+                item.classList.remove("active")
+            })
+            pages[i].classList.add("active")
+            dot.forEach(function(item,i){
+                item.classList.remove("active")
+            })
+            dot[i].classList.add("active")
+        }
+    })
+    
+    // 透明轮播图结束
+
+    // 无缝轮播开始
+    // let box = document.querySelector(".box")
+    // animate(box,{'width:300'})
+    // let prev = 0
+    // let now = 0
+    // pages.forEach(function(item,i){
+    //     if(i==0){
+    //         return
+    //     }
+    //     item.style.left="1226px"
+    // })
+    // // 切换功能
+    // function run(status = 'next'){
+    //     if(status=='next'){
+    //         now+=1
+    //         if(now>4){
+    //             now = 0
+    //         }
+    //         pages[now].style.left = "1226px"
+    //         animate(pages[now],{'left':0})
+    //         animate(pages[prev],{'left':-1226}) 
+    //     }else if(status=='pre'){
+    //         now-=1
+    //         if(now<0){
+    //             now = 4
+    //         }
+    //         pages[now].style.left = "-1226px"
+    //         animate(pages[now],{'left':0})
+    //         animate(pages[prev],{'left':1226}) 
+    //     } 
+    //     now+=1
+    //     // 限制范围
+    //     prev = now
+    // }
+    // let t = setInterval(run,2000)
+    // // 移入
+    // banner.onmouseenter = function(){
+    //     clearInterval(t)
+    // }
+    // banner.onmouseleave = function(){
+    //     t = setInterval(run,2000)
+    // }
+    // // 左右箭头
+    // next.onclick = function(){
+    //     run()
+    // }
+    // pre.onclick = function(){
+    //     run('pre')
+    // }
+    // 无缝轮播结束
 }
