@@ -119,7 +119,7 @@ window.onload = function () {
 
     // 轮播图左侧选项卡效果结束
     // 家电开始(选项卡功能函数)
-    function select(n,b) {
+    function select(n, b) {
         let navs = document.querySelectorAll(n)
         let boxs = document.querySelectorAll(b)
         // alert(boxs.length)
@@ -138,11 +138,11 @@ window.onload = function () {
             }
         })
     }
-    select(".pop1 .ls",".con1 .furni-right")
-    select(".pop2 .ls",".con2 .furni-right")
-    select(".pop3 .ls",".con3 .furni-right")
-    select(".pop4 .ls",".con4 .furni-right")
-    select(".pop5 .ls",".con5 .furni-right")
+    select(".pop1 .ls", ".con1 .furni-right")
+    select(".pop2 .ls", ".con2 .furni-right")
+    select(".pop3 .ls", ".con3 .furni-right")
+    select(".pop4 .ls", ".con4 .furni-right")
+    select(".pop5 .ls", ".con5 .furni-right")
     // 家电结束
     // 上边的栏开始
     // let span = document.querySelectorAll(".navBox nav span")
@@ -158,7 +158,7 @@ window.onload = function () {
     //         item.style.transition = ""
     //     })
     // }
-    
+
     // span.forEach(function(item,i){
     //     item.onmouseenter = function(){
     //         // boxs[i].style.height = "200px"
@@ -169,17 +169,17 @@ window.onload = function () {
     //     }
     // })
 
-	let lis = document.querySelectorAll(".search-list .nav .link")	
-	let listBox = document.querySelectorAll(".search-list .nav .link .list-box")
-	lis.forEach(function(item,i){
-		item.onmouseenter = function(){
-			listBox.forEach(function(item){
-				item.style.zIndex = 0
-			})
-			listBox[i].style.zIndex = 10
-		}
-	})
-    
+    let lis = document.querySelectorAll(".search-list .nav .link")
+    let listBox = document.querySelectorAll(".search-list .nav .link .list-box")
+    lis.forEach(function (item, i) {
+        item.onmouseenter = function () {
+            listBox.forEach(function (item) {
+                item.style.zIndex = 0
+            })
+            listBox[i].style.zIndex = 10
+        }
+    })
+
     // 上边的栏结束
     // 透明轮播图开始
     let index = 0       //执行定义
@@ -188,57 +188,57 @@ window.onload = function () {
     let pre = document.querySelector(".banner-box .left")
     let next = document.querySelector(".banner-box .right")
     let dot = document.querySelectorAll(".dot")
-    banner.onmouseenter = function(){         //事件，异步，触发的时候才调用
+    banner.onmouseenter = function () {         //事件，异步，触发的时候才调用
         clearInterval(t)
     }
-    banner.onmouseleave = function(){            
-        t = setInterval(run,3000)
+    banner.onmouseleave = function () {
+        t = setInterval(run, 3000)
     }
-    function run(status='next'){
+    function run(status = 'next') {
         // 轮播一次
         // console.log("轮播")
-        if(status=='next'){
-            index+=1
-        }else if(status=='pre'){
-            index-=1
-        } 
-        if(index>4){
+        if (status == 'next') {
+            index += 1
+        } else if (status == 'pre') {
+            index -= 1
+        }
+        if (index > 4) {
             index = 0
         }
-        if(index<0){
+        if (index < 0) {
             index = 4
         }
-        pages.forEach(function(item,i){
+        pages.forEach(function (item, i) {
             item.classList.remove("active")
         })
         pages[index].classList.add("active")
-        dot.forEach(function(item,i){
+        dot.forEach(function (item, i) {
             item.classList.remove("active")
         })
         dot[index].classList.add("active")
     }
-    let t = setInterval(run,3000)    //异步
+    let t = setInterval(run, 3000)    //异步
 
-    next.onclick = function(){
+    next.onclick = function () {
         run()
     }
-    pre.onclick = function(){
+    pre.onclick = function () {
         run('pre')
     }
     // 轮播点和图对应
-    dot.forEach(function(item,i){
-        item.onclick = function(){
-            pages.forEach(function(item,i){
+    dot.forEach(function (item, i) {
+        item.onclick = function () {
+            pages.forEach(function (item, i) {
                 item.classList.remove("active")
             })
             pages[i].classList.add("active")
-            dot.forEach(function(item,i){
+            dot.forEach(function (item, i) {
                 item.classList.remove("active")
             })
             dot[i].classList.add("active")
         }
     })
-    
+
     // 透明轮播图结束
 
     // 无缝轮播开始
@@ -291,4 +291,69 @@ window.onload = function () {
     //     run('pre')
     // }
     // 无缝轮播结束
+
+    // 闪购平移
+    let flashbtn_left = document.querySelector(".flash-more .more-prev")
+    let flashbtn_right = document.querySelector(".flash-more .more-next")
+    let flash_body = document.querySelector(".flash-move-body")
+    let num = 0
+
+    flashbtn_right.onclick = function () {
+        if (num > -992) {
+            num = num + (-992)
+            flash_body.style.left = num + 'px'
+            flashbtn_left.style.color = " #b0b0b0";
+        } else if (num > -1984) {
+            num = num + (-992)
+            flash_body.style.left = num + 'px'
+            flashbtn_left.style.color = " #b0b0b0";
+            flashbtn_right.style.color = " #e0e0e0";
+        }
+    }
+    flashbtn_left.onclick = function () {
+        if (num < -992) {
+            num = num - (-992)
+            flash_body.style.left = num + 'px'
+            flashbtn_right.style.color = " #b0b0b0";
+        } else if (num < 0) {
+            num = num - (-992)
+            flash_body.style.left = num + 'px'
+            flashbtn_right.style.color = " #b0b0b0";
+            flashbtn_left.style.color = " #e0e0e0";
+        }
+    }
+    //为你推荐平移
+    let movebtn_left = document.querySelector(".recommend-move-btn .btn-left")
+    let movebtn_right = document.querySelector(".recommend-move-btn .btn-right")
+    let recommend  = document.querySelector(".bottomtwo")
+    let long = 0
+
+    movebtn_right.onclick = function(){
+        if(long>-1226){
+            long = long+(-1226)
+            recommend.style.left = long+'px'
+            movebtn_left.style.color =" #b0b0b0";
+        }else if(long>-2452){
+            long = long+(-1226)
+            recommend.style.left = long+'px'
+            movebtn_left.style.color =" #b0b0b0";
+            movebtn_right.style.color =" #e0e0e0";
+        }
+    }
+    movebtn_left.onclick = function(){
+        if(long<-1226){
+            long = long-(-1226)
+            recommend.style.left = long+'px'
+            movebtn_right.style.color =" #b0b0b0";
+        }else if(long<0){
+            long = long-(-1226)
+            recommend.style.left = long+'px'
+            movebtn_right.style.color =" #b0b0b0";
+            movebtn_left.style.color =" #e0e0e0";
+        }
+    }
 }
+
+
+
+
